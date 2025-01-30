@@ -19,22 +19,9 @@ In this project, I:
 
 To get started with the project locally, clone this repository and install the dependencies.
 
-### Clone the repository
-
-```bash
-git clone https://github.com/your-username/AI-Programming-Python.git
-cd AI-Programming-Python
-```
-
-### Install dependencies
-
-```bash
-pip install -r requirements.txt
-```
-
 Make sure to have Python 3.6+ installed.
 
-The `requirements.txt` file includes:
+The imports includes:
 - `torch` (PyTorch) for model development and training.
 - `torchvision` for datasets and pretrained models.
 - `matplotlib` for displaying images.
@@ -86,12 +73,9 @@ Top 3 - Category: Tulip, Probability: 0.05
 ```
 AI-Programming-Python/
 │
-├── Final_image_classifier_project.py    # Main script for classifying images.
-├── model.py                # Defines the neural network model.
+├── Image_Classifier_Project.py    # Main script for classifying images.
 ├── train.py                # Script for training the model.
 ├── predict.py              # Script for making predictions.
-├── utils.py                # Utility functions for preprocessing and data loading.
-├── requirements.txt        # List of dependencies.
 ├── checkpoint.pth          # Pretrained model checkpoint.
 └── cat_to_name.json        # Mapping of category indices to names.
 ```
@@ -100,6 +84,4 @@ AI-Programming-Python/
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
----
-
-This version of the README includes examples for both training the model and predicting classes from an image, along with a detailed breakdown of the commands and their expected output. Feel free to tweak it as needed! 😊
+--S
