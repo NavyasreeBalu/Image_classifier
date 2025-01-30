@@ -34,16 +34,21 @@ def main_predict():
     image = image.to(device)
     
     # Perform prediction with top K classes
-    top_classes, top_probabilities = predict(model, image, args.top_k, device)
+    with torch.no_grad():  # No gradients needed for inference
+        top_classes, top_probabilities = predict(model, image, args.top_k, device)
     
     # Load category names mapping
-    with open(args.category_names, 'r') as f:
-        cat_to_name = json.load(f)
+    try:
+        with open(args.category_names, 'r') as f:
+            cat_to_name = json.load(f)
+    except FileNotFoundError:
+        print(f"Error: The file {args.category_names} was not found.")
+        return
     
     # Display category names in the output
     print(f"Image Categories:")
     for i in range(len(top_classes)):
-        class_name = cat_to_name[top_classes[i]]
+        class_name = cat_to_name.get(top_classes[i], "Unknown class")
         print(f"Top {i+1} - Category: {class_name}, Probability: {top_probabilities[i]}")
 
 if __name__ == "__main__":

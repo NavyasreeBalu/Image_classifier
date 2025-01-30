@@ -1,3 +1,7 @@
+Here’s an updated version of your README with the suggestions included:
+
+---
+
 # AI Programming with Python - Image Classifier Project
 
 This project is part of Udacity's AI Programming with Python Nanodegree program. In this project, I developed an image classifier using PyTorch and later transformed it into a command-line application.
@@ -14,7 +18,7 @@ In this project, I:
 - **Image Classification**: Classifies images from a set of categories.
 - **PyTorch Implementation**: Utilized PyTorch for deep learning model development and training.
 - **Command-Line Interface (CLI)**: Convert the image classifier into a command-line application, allowing users to classify images using simple commands.
-  
+
 ## Installation
 
 To get started with the project locally, clone this repository and install the dependencies.
@@ -34,19 +38,52 @@ pip install -r requirements.txt
 
 Make sure to have Python 3.6+ installed.
 
+The `requirements.txt` file includes:
+- `torch` (PyTorch) for model development and training.
+- `torchvision` for datasets and pretrained models.
+- `matplotlib` for displaying images.
+- `Pillow` (PIL) for image processing.
+- `json` for handling category names mapping.
+
 ## Usage
 
 To use the image classifier, run the following command:
 
+### 1. Training the Model:
+
 ```bash
-python classifier.py --image_path path_to_image --checkpoint checkpoint.pth --category_names category_names.json --gpu
+python python train.py flowers/ --arch resnet34 --learning_rate 0.001 --hidden_units 512 --epochs 10 --gpu
 ```
 
 Where:
-- `--image_path` is the path to the image you want to classify.
-- `--checkpoint` is the path to the saved model checkpoint.
-- `--category_names` is an optional JSON file mapping category indices to category names.
-- `--gpu` (optional) uses GPU for computation if available.
+- `flowers/` is the path to the image dataset (including train, test, and validation subdirectories).
+- `--arch` specifies the architecture of the model (e.g., `vgg16`, `resnet34`).
+- `--learning_rate` sets the learning rate (e.g., `0.001`).
+- `--epochs` specifies the number of epochs for training (e.g., `10`).
+- `--gpu` uses GPU for training if available.
+
+### 2. Classifying an Image:
+
+Once the model is trained, you can classify a new image using the following command:
+
+```bash
+python predict.py flowers/test/1/image_06743.jpg checkpoint.pth --category_names cat_to_name.json --top_k 3 --gpu
+```
+
+Where:
+- `flowers/test/1/image_06743.jpg` is the path to the image you want to classify.
+- `checkpoint.pth` is the saved model checkpoint file.
+- `--category_names` is a JSON file that maps category indices to names (e.g., `cat_to_name.json`).
+- `--top_k` specifies the number of top predictions to show (default is `1`).
+- `--gpu` uses GPU for computation if available.
+
+### Expected Output:
+
+```text
+Top 1 - Category: Daisy, Probability: 0.85
+Top 2 - Category: Rose, Probability: 0.10
+Top 3 - Category: Tulip, Probability: 0.05
+```
 
 ## Project Structure
 
@@ -60,7 +97,7 @@ AI-Programming-Python/
 ├── utils.py                # Utility functions for preprocessing and data loading.
 ├── requirements.txt        # List of dependencies.
 ├── checkpoint.pth          # Pretrained model checkpoint.
-└── cat_to_name_.json     # Mapping of category indices to names.
+└── cat_to_name.json        # Mapping of category indices to names.
 ```
 
 ## License
@@ -68,3 +105,5 @@ AI-Programming-Python/
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
+
+This version of the README includes examples for both training the model and predicting classes from an image, along with a detailed breakdown of the commands and their expected output. Feel free to tweak it as needed! 😊
