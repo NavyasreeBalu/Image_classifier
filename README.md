@@ -1,7 +1,3 @@
-Here’s an updated version of your README with the suggestions included:
-
----
-
 # AI Programming with Python - Image Classifier Project
 
 This project is part of Udacity's AI Programming with Python Nanodegree program. In this project, I developed an image classifier using PyTorch and later transformed it into a command-line application.
